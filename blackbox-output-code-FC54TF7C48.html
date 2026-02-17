@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moments Capture - Wedding Photography Booking</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }
+        header { background-color: #333; color: white; padding: 20px; text-align: center; }
+        nav { background-color: #444; padding: 10px; text-align: center; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; }
+        section { padding: 40px; max-width: 1200px; margin: auto; }
+        .hero { background-image: url('hero-wedding.jpg'); background-size: cover; height: 400px; display: flex; align-items: center; justify-content: center; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .portfolio img { width: 30%; margin: 10px; border-radius: 5px; }
+        form { display: flex; flex-direction: column; max-width: 400px; }
+        input, textarea, button { margin: 10px 0; padding: 10px; }
+        button { background-color: #333; color: white; border: none; cursor: pointer; }
+        .hidden { display: none; }
+        footer { background-color: #333; color: white; text-align: center; padding: 20px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Moments Capture</h1>
+        <p>Capturing Your Perfect Wedding Moments</p>
+    </header>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact & Submissions</a>
+    </nav>
+    
+    <section id="home" class="hero">
+        <div>
+            <h2>Welcome to Moments Capture</h2>
+            <p>Professional wedding photography to cherish forever. Book your session or submit your work today!</p>
+            <a href="#contact"><button>Get Started</button></a>
+        </div>
+    </section>
+    
+    <section id="about">
+        <h2>About Us</h2>
+        <p>At Moments Capture, we specialize in wedding photography, capturing the joy, love, and emotions of your special day. With years of experience, our team ensures every moment is beautifully preserved.</p>
+    </section>
+    
+    <section id="services">
+        <h2>Our Services</h2>
+        <ul>
+            <li>Full Wedding Day Coverage</li>
+            <li>Engagement Sessions</li>
+            <li>Portrait Photography</li>
+            <li>Photo Editing and Albums</li>
+        </ul>
+        <p>Packages start at $1,500. Contact us for custom quotes.</p>
+    </section>
+    
+    <section id="portfolio">
+        <h2>Portfolio</h2>
+        <div class="portfolio">
+            <img src="wedding1.jpg" alt="Wedding Photo 1">
+            <img src="wedding2.jpg" alt="Wedding Photo 2">
+            <img src="wedding3.jpg" alt="Wedding Photo 3">
+            <!-- Add more images as needed -->
+        </div>
+    </section>
+    
+    <section id="contact">
+        <h2>Contact & Submissions</h2>
+        <p>Book a wedding photography session or submit your work photos for review. Fill out the form below!</p>
+        <form action="#" method="post" enctype="multipart/form-data" id="contactForm"> <!-- Replace # with actual backend URL -->
+            <label>
+                <input type="radio" name="purpose" value="book" checked> Book a Session
+            </label>
+            <label>
+                <input type="radio" name="purpose" value="submit"> Submit Work
+            </label>
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email Address" required>
+            <input type="tel" name="phone" placeholder="Your Contact Number" required>
+            <input type="date" name="date" placeholder="Preferred Date" id="dateField" class="hidden" required>
+            <input type="file" name="photos" accept="image/*" multiple id="photosField" class="hidden"> <!-- Optional for booking -->
+            <textarea name="message" placeholder="Tell us about your wedding or work"></textarea>
+            <button type="submit">Submit</button>
+        </form>
+        <p>Contact: info@momentscapture.com | Phone: (123) 456-7890</p>
+        <p>Note: For submissions, files must be images (JPG, PNG, etc.) and under 10MB total. We respect your privacy.</p>
+    </section>
+    
+    <footer>
+        <p>&copy; 2023 Moments Capture. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        // Smooth scroll for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+        
+        // Toggle form fields based on radio selection
+        const radios = document.querySelectorAll('input[name="purpose"]');
+        const dateField = document.getElementById('dateField');
+        const photosField = document.getElementById('photosField');
+        
+        radios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.value === 'book') {
+                    dateField.classList.remove('hidden');
+                    photosField.classList.add('hidden');
+                    photosField.required = false;
+                    dateField.required = true;
+                } else {
+                    dateField.classList.add('hidden');
+                    photosField.classList.remove('hidden');
+                    dateField.required = false;
+                    photosField.required = true;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
